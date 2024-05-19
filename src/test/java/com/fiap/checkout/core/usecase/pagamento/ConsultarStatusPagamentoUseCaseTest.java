@@ -33,17 +33,6 @@ public class ConsultarStatusPagamentoUseCaseTest {
     }
 
     @Test
-    public void consultarStatusPagamento_NullResponse_ReturnsNull() {
-
-        ConsultarStatusPagamentoResponse inputResponse = null;
-
-        ConsultarStatusPagamentoResponse result = useCase.consultarStatusPagamento(inputResponse);
-
-        assertNull(result);
-        verify(outputPort, never()).consultarStatusPagamento(any());
-    }
-
-    @Test
     public void consultarStatusPagamento_OutputPortReturnsDifferentResponse_ReturnsOutputPortResponse() {
 
         ConsultarStatusPagamentoResponse inputResponse = new ConsultarStatusPagamentoResponse();

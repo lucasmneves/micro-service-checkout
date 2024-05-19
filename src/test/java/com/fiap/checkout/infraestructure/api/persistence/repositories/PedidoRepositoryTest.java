@@ -1,4 +1,4 @@
-package com.fiap.checkout.infraestructure.api.controller.persistence.repositories;
+package com.fiap.checkout.infraestructure.api.persistence.repositories;
 
 import com.fiap.checkout.infraestructure.persistence.entities.PedidoEntity;
 import org.junit.jupiter.api.Test;
