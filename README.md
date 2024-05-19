@@ -9,7 +9,7 @@ Este projeto faz parte de um sistema de autoatendimento de fast food desenvolvid
 ## Características - microservices checkout
 
 - **Pagamento do pedido**: Realizar o pagamento atraves de uma api simulando uma comunicacao com o mercado pago
-- **Webhook pagamento**: Facilita a atualização das informações dos produtos.
+- **Webhook pagamento**: Atualiza em tempo real o status do pagamento.
 
 ## Tecnologias Utilizadas
 
