@@ -20,7 +20,7 @@ public class WebhookPagamentoUseCaseTest {
     }
 
     @Test
-    public void webhookPagamento_WithNullResponse_ShouldThrowException() {
+    public void webhookPagamento_RetornaNull_ThrowException() {
 
         WebhookPagamentoResponse response = null;
 

@@ -16,4 +16,7 @@ public class EfetuarPagamentoRequest implements Serializable {
     @JsonProperty("id_pagamento")
     private String idPagamento;
 
+    @JsonProperty("valor")
+    private String valor;
+
 }

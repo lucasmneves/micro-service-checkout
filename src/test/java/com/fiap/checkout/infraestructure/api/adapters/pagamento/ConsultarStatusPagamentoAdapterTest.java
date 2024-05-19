@@ -54,7 +54,7 @@ public class ConsultarStatusPagamentoAdapterTest {
     }
 
     @Test
-    public void testConsultarStatusPagamento_PedidoExistsAndStatusPending() {
+    public void testConsultarStatusPagamento() {
         // Arrange
         ConsultarStatusPagamentoResponse consultarStatusPagamentoResponse = new ConsultarStatusPagamentoResponse();
         consultarStatusPagamentoResponse.setIdPedido("2");

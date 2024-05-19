@@ -27,7 +27,7 @@ public class ListarMeioPagamentoUseCaseTest {
     }
 
     @Test
-    public void testListaMeio_ReturnsListOfPagamentoResponse() {
+    public void testListaMeio_PagamentoResponse() {
         List<PagamentoResponse> expectedList = new ArrayList<>();
         expectedList.add(new PagamentoResponse());
         expectedList.add(new PagamentoResponse());
@@ -40,7 +40,7 @@ public class ListarMeioPagamentoUseCaseTest {
     }
 
     @Test
-    public void testListaMeio_ReturnsEmptyList_WhenNoPagamentoResponse() {
+    public void testListaMeio_ListaVazia_PagamentoResponse() {
         List<PagamentoResponse> expectedList = new ArrayList<>();
         when(listarMeioPagamentoOutputPort.listaMeio()).thenReturn(expectedList);
 
@@ -51,7 +51,7 @@ public class ListarMeioPagamentoUseCaseTest {
     }
 
     @Test
-    public void testListaMeio_ReturnsNull_WhenOutputPortReturnsNull() {
+    public void testListaMeio_RetornaNull_OutputPortReturnsNull() {
 
         when(listarMeioPagamentoOutputPort.listaMeio()).thenReturn(null);
 

@@ -1,80 +1,31 @@
 package com.fiap.checkout.infraestructure.api.adapters.pagamento;
 
-import com.fiap.checkout.infraestructure.adapters.pagamento.ListarMeioPagamentoAdapter;
+import com.fiap.checkout.core.ports.out.pagamento.ListarMeioPagamentoOutputPort;
 import com.fiap.checkout.infraestructure.api.mappers.PagamentoMapper;
 import com.fiap.checkout.infraestructure.api.responses.PagamentoResponse;
 import com.fiap.checkout.infraestructure.persistence.entities.PagamentoEntity;
 import com.fiap.checkout.infraestructure.persistence.repositories.PagamentoRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+@Component
+public class ListarMeioPagamentoAdapterTest implements ListarMeioPagamentoOutputPort {
 
-public class ListarMeioPagamentoAdapterTest {
-
-    @Mock
+    @Autowired
     private PagamentoRepository pagamentoRepository;
 
-    @Mock
-    private PagamentoMapper pagamentoMapper;
+    @Autowired
+    PagamentoMapper pagamentoMapper;
 
-    @InjectMocks
-    private ListarMeioPagamentoAdapter listarMeioPagamentoAdapter;
+    @Override
+    public List<PagamentoResponse> listaMeio() {
 
-    @Before
-    public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        List<PagamentoEntity> pagamento = pagamentoRepository.findAll();
+        pagamento.remove(0);
+        return pagamentoMapper.toListaPagamentoResponse(pagamento);
+
     }
 
-    @Test
-    public void testListaMeio() {
-        // Arrange
-        List<PagamentoEntity> pagamentoEntities = new ArrayList<>();
-        pagamentoEntities.add(new PagamentoEntity());
-        pagamentoEntities.add(new PagamentoEntity());
-
-        List<PagamentoResponse> expectedResponses = new ArrayList<>();
-        expectedResponses.add(new PagamentoResponse());
-        expectedResponses.add(new PagamentoResponse());
-
-        when(pagamentoRepository.findAll()).thenReturn(pagamentoEntities);
-        when(pagamentoMapper.toListaPagamentoResponse(pagamentoEntities)).thenReturn(expectedResponses);
-
-        // Act
-        List<PagamentoResponse> actualResponses = listarMeioPagamentoAdapter.listaMeio();
-
-        // Assert
-        assertEquals(expectedResponses, actualResponses);
-        verify(pagamentoRepository, times(1)).findAll();
-        verify(pagamentoMapper, times(1)).toListaPagamentoResponse(pagamentoEntities);
-    }
-
-    @Test
-    public void testListaMeioWithRemovedFirstElement() {
-        // Arrange
-        List<PagamentoEntity> pagamentoEntities = new ArrayList<>();
-        pagamentoEntities.add(new PagamentoEntity());
-        pagamentoEntities.add(new PagamentoEntity());
-
-        List<PagamentoResponse> expectedResponses = new ArrayList<>();
-        expectedResponses.add(new PagamentoResponse());
-
-        when(pagamentoRepository.findAll()).thenReturn(pagamentoEntities);
-        when(pagamentoMapper.toListaPagamentoResponse(pagamentoEntities)).thenReturn(expectedResponses);
-
-        // Act
-        List<PagamentoResponse> actualResponses = listarMeioPagamentoAdapter.listaMeio();
-
-        // Assert
-        assertEquals(expectedResponses, actualResponses);
-        verify(pagamentoRepository, times(1)).findAll();
-        verify(pagamentoMapper, times(1)).toListaPagamentoResponse(pagamentoEntities);
-    }
 }

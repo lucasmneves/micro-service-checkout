@@ -20,13 +20,13 @@ public class EfetuarPagamentoUseCaseTest {
     }
 
     @Test
-    public void efetuarPagamento_ShouldSetStatusToPendente() {
+    public void efetuarPagamento_SetStatusToPendente() {
         useCase.efetuarPagamento(response);
         assertEquals("Pendente", response.getStatus());
     }
 
     @Test
-    public void efetuarPagamento_ShouldSetQrCode() {
+    public void efetuarPagamento_SetQrCode() {
         useCase.efetuarPagamento(response);
         assertNotNull(response.getQrCode());
         assertTrue(response.getQrCode().startsWith("0000028930293029309COM.MERCADOLIBRE"));
@@ -34,14 +34,14 @@ public class EfetuarPagamentoUseCaseTest {
     }
 
     @Test
-    public void efetuarPagamento_ShouldSetUrlWebhook() {
+    public void efetuarPagamento_SetUrlWebhook() {
         response.setIdPedido("123456");
         useCase.efetuarPagamento(response);
         assertEquals("localhost:8989/pagamento/123456", response.getUrlWebhook());
     }
 
     @Test
-    public void efetuarPagamento_ShouldCallEfetuarPagamentoOnOutputPort() {
+    public void efetuarPagamento_EfetuarPagamentoOnOutputPort() {
         useCase.efetuarPagamento(response);
         assertTrue(outputPortMock.isEfetuarPagamentoCalled());
         assertSame(response, outputPortMock.getEfetuarPagamentoResponse());

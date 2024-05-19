@@ -26,19 +26,16 @@ public class EfetuarPagamentoAdapter implements EfetuarPagamentoOutputPort {
     public EfetuarPagamentoResponse efetuarPagamento(EfetuarPagamentoResponse efetuarPagamentoResponse) {
 
         Optional<PagamentoEntity> pagamento = pagamentoRepository.findById("3"); //Tipo pagto - Mercado pago
-        Optional<PedidoEntity> pedido = pedidoRepository.findById(efetuarPagamentoResponse.getIdPedido());
 
-        Optional<PedidoEntity> pedidoEntity = pedidoRepository.findById(efetuarPagamentoResponse.getIdPedido());
-        if(pedidoEntity.isPresent()){
-            pedidoEntity.get().setId_status("3");
-            pedidoEntity.get().setId_pagamento("3");
-            pedidoRepository.save(pedidoEntity.get());
-        }else{
-            throw new RuntimeException(ExceptionsMessageEnum.PEDIDO_NAO_ENCONTRADO.value());
-        }
+        PedidoEntity pedidoEntity = new PedidoEntity();
+            pedidoEntity.setId(efetuarPagamentoResponse.getIdPedido());
+            pedidoEntity.setValor_total(efetuarPagamentoResponse.getValor());
+            pedidoEntity.setId_status("3");
+            pedidoEntity.setId_pagamento("3");
+            pedidoRepository.save(pedidoEntity);
 
         efetuarPagamentoResponse.setTipoPagamento(pagamento.get().getNome());
-        efetuarPagamentoResponse.setValor(pedido.get().getValor_total());
+        //efetuarPagamentoResponse.setValor(pedido.get().getValor_total());
 
         return efetuarPagamentoResponse;
     }

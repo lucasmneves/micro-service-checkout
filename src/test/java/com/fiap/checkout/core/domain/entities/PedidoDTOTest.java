@@ -15,7 +15,6 @@ public class PedidoDTOTest {
         assertEquals("12345", pedido.getId());
     }
 
-
     @Test
     public void testGetIdStatus() {
         PedidoDTO pedido = new PedidoDTO();

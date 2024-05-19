@@ -47,12 +47,12 @@ CREATE TABLE "public"."pagamento" (
 
 CREATE TABLE "public"."pedido" (
     "id" VARCHAR(36)  NOT NULL,
-    "senha" VARCHAR(10) NOT NULL,
-    "id_status" VARCHAR(1) NOT NULL,
+    "senha" VARCHAR(10),
+    "id_status" VARCHAR(1),
     "cpf" VARCHAR(11),
     "detalhes" VARCHAR(255),
     "valor_total" money NOT NULL,
-    "data_hora_inicio" timestamp NOT NULL,
+    "data_hora_inicio" timestamp,
     "data_hora_fim" timestamp,
     "id_pagamento" VARCHAR(1),
     "id_satisfacao" VARCHAR(1),

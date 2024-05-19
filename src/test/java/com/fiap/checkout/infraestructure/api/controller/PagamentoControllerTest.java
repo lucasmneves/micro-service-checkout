@@ -52,7 +52,7 @@ class PagamentoControllerTest {
     }
 
     @Test
-    void listarMeiosPagamentos_ShouldReturnListOfPagamentoResponse() {
+    void listarMeiosPagamentos_RetornaLista_PagamentoResponse() {
 
         List<PagamentoResponse> expectedPagamentos = new ArrayList<>();
         when(listarMeiosPagamentosInputPort.listaMeio()).thenReturn(expectedPagamentos);
@@ -64,7 +64,7 @@ class PagamentoControllerTest {
     }
 
     @Test
-    void efetuarPagamento_ShouldReturnOkResponseWithEfetuarPagamentoResponse() {
+    void efetuarPagamento_EfetuarPagamentoResponse() {
 
         EfetuarPagamentoRequest efetuarPagamentoRequest = new EfetuarPagamentoRequest();
         EfetuarPagamentoResponse expectedPagamento = new EfetuarPagamentoResponse();
@@ -79,7 +79,7 @@ class PagamentoControllerTest {
     }
 
     @Test
-    void webhookPagamento_ShouldReturnOkResponseWithWebhookPagamentoResponse() {
+    void webhookPagamento_WebhookPagamentoResponse() {
         String id = "123";
         WebhookPagamentoResponse expectedWebhookPagamento = new WebhookPagamentoResponse();
         when(webhookPagamentoInputPort.webhookPagamento(any(WebhookPagamentoResponse.class))).thenReturn(expectedWebhookPagamento);
@@ -92,7 +92,7 @@ class PagamentoControllerTest {
     }
 
     @Test
-    void consultarStatusPagamento_ShouldReturnOkResponseWithConsultarStatusPagamentoResponse() {
+    void consultarStatusPagamento_ConsultarStatusPagamentoResponse() {
         String id = "123";
         ConsultarStatusPagamentoResponse expectedConsultarStatusPagamento = new ConsultarStatusPagamentoResponse();
         when(consultarStatusPagamentoInputPort.consultarStatusPagamento(any(ConsultarStatusPagamentoResponse.class))).thenReturn(expectedConsultarStatusPagamento);

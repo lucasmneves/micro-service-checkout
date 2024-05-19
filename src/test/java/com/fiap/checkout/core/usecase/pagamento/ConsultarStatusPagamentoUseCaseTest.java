@@ -21,7 +21,7 @@ public class ConsultarStatusPagamentoUseCaseTest {
     }
 
     @Test
-    public void consultarStatusPagamento_ValidResponse_ReturnsSameResponse() {
+    public void consultarStatusPagamento_ReturnsSameResponse() {
 
         ConsultarStatusPagamentoResponse inputResponse = new ConsultarStatusPagamentoResponse();
         when(outputPort.consultarStatusPagamento(inputResponse)).thenReturn(inputResponse);
@@ -33,7 +33,7 @@ public class ConsultarStatusPagamentoUseCaseTest {
     }
 
     @Test
-    public void consultarStatusPagamento_OutputPortReturnsDifferentResponse_ReturnsOutputPortResponse() {
+    public void consultarStatusPagamento_ReturnsOutputPortResponse() {
 
         ConsultarStatusPagamentoResponse inputResponse = new ConsultarStatusPagamentoResponse();
         ConsultarStatusPagamentoResponse outputResponse = new ConsultarStatusPagamentoResponse();
