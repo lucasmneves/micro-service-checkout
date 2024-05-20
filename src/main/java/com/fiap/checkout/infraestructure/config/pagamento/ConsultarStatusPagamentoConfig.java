@@ -10,7 +10,6 @@ public class ConsultarStatusPagamentoConfig {
     public ConsultarStatusPagamentoUseCase consultarStatusPagamentoUseCase(ConsultarStatusPagamentoAdapter consultarStatusPagamentoAdapter){
         return new ConsultarStatusPagamentoUseCase(consultarStatusPagamentoAdapter);
     };
-
 }
 
 
