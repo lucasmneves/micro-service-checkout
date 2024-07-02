@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkout-ms
+  namespace: checkout-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: checkout-ms
+  template:
+    metadata:
+      labels:
+        app: checkout-ms
+    spec:
+      containers:
+        - name: checkout-ms
+          image: $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          ports:
+            - containerPort: 8989
+          resources:
+            requests:
+              cpu: 100m       # Solicita 100 milicores de CPU
+              memory: 256Mi   # Solicita 256 Mebibytes de memória
+            limits:
+              cpu: 200m       # Limita a 200 milicores de CPU
+              memory: 512Mi   # Limita a 512 Mebibytes de memória
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8989
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8989
+            initialDelaySeconds: 10
+            periodSeconds: 5
