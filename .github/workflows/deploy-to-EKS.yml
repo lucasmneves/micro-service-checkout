@@ -5,24 +5,20 @@ on:
     branches: [ "develop" ]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Check out the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      # Step 2: Set up Java environment
-      - name: Setup Java
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin' # ou outro, como 'zulu', 'adopt'
-          java-version: '17' # Versão do Java compatível com sua aplicação
+          java-version: '17'
 
-      # Step 3: Build the application with Gradle
       - name: Build with Maven
-          run: mvn -B package --file pom.xml
+        run: mvn clean package
 
       # Step 4: Configure AWS credentials
       - name: Configure AWS credentials
