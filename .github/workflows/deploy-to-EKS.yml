@@ -36,7 +36,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       # Step 6: Build Docker image
-      - name: Build Docker image customer
+      - name: Build Docker image checkout
         run: |
           docker build -t ${{ secrets.ECR_REPOSITORY }}:latest .
 
@@ -52,7 +52,7 @@ jobs:
 
       - name: Create namespace
         run: |
-          kubectl apply -f infra/namespace-customer.yml
+          kubectl apply -f infra/namespace-checkout.yml
 
       - name: Substitute variables in deployment.yml
         run: |
@@ -62,15 +62,15 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
           GITHUB_SHA: ${{ github.sha }}
 
-      - name: Deploy application customer
+      - name: Deploy application checkout
         run: |
-          kubectl apply -f infra/deployment_substituted.yml -n customer-namespace
+          kubectl apply -f infra/deployment_substituted.yml -n checkout-namespace
 
       - name: Create service
         run: |
-          kubectl apply -f infra/service.yml -n customer-namespace
+          kubectl apply -f infra/service.yml -n checkout-namespace
 
       #- name: Wait for rollout to finish
         #run: |
-          #kubectl rollout status deployment/customer-ms -n customer-namespace
+          #kubectl rollout status deployment/checkout-ms -n checkout-namespace
           #TO DO arruma readnessProbe para acionar essa verificação
