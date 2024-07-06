@@ -11,7 +11,7 @@ Este projeto faz parte de um sistema de autoatendimento de fast food desenvolvid
 - **Pagamento do pedido**: Realizar o pagamento atraves de uma api simulando uma comunicacao com o mercado pago
 - **Webhook pagamento**: Atualiza em tempo real o status do pagamento.
 
-## Tecnologias Utilizadas
+## Tecnologias Utilizadas 
 
 - **Linguagem**: Java
 - **Framework**: Spring Boot
