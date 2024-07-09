@@ -20,20 +20,22 @@ spec:
             - containerPort: 8989
           resources:
             requests:
-              cpu: 100m       # Solicita 100 milicores de CPU
+              cpu: 500m       # Solicita 100 milicores de CPU
               memory: 256Mi   # Solicita 256 Mebibytes de memória
             limits:
-              cpu: 200m       # Limita a 200 milicores de CPU
+              cpu: 1000m       # Limita a 200 milicores de CPU
               memory: 512Mi   # Limita a 512 Mebibytes de memória
           livenessProbe:
             httpGet:
-              path: /healthz
+              path: /actuator/health/liveness
               port: 8989
-            initialDelaySeconds: 15
-            periodSeconds: 10
+            initialDelaySeconds: 40
+            periodSeconds: 15
+            timeoutSeconds: 10
           readinessProbe:
             httpGet:
-              path: /readyz
+              path: /actuator/health/readiness
               port: 8989
-            initialDelaySeconds: 10
-            periodSeconds: 5
+            initialDelaySeconds: 30
+            periodSeconds: 15
+            timeoutSeconds: 10
