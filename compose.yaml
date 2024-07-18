@@ -29,7 +29,7 @@ services:
       dockerfile: Dockerfile
     container_name: fiap-burger-java
     ports:
-      - "8585:8585"
+      - "8989:8989"
     depends_on:
       - postgres
     environment:
