@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: checkout-service
   namespace: checkout-namespace
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-arn: arn:aws:elasticloadbalancing:us-east-1:643230847802:loadbalancer/net/fiap-burger-lb-checkout/ce68cee862946774
 spec:
   selector:
     app: checkout-ms
@@ -10,5 +12,4 @@ spec:
     - port: 80
       targetPort: 8585
   type: LoadBalancer
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-arn: arn:aws:elasticloadbalancing:us-east-1:643230847802:loadbalancer/net/fiap-burger-lb-checkout/ce68cee862946774
+  
