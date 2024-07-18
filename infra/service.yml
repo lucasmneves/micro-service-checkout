@@ -11,4 +11,4 @@ spec:
       targetPort: 8585
   type: LoadBalancer
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-arn: arn:aws:elasticloadbalancing:us-east-1:643230847802:loadbalancer/net/fiap-burger-lb-checkout/e8bc3f4fc443a6a1
+    service.beta.kubernetes.io/aws-load-balancer-arn: arn:aws:elasticloadbalancing:us-east-1:643230847802:loadbalancer/net/fiap-burger-lb-checkout/ce68cee862946774
