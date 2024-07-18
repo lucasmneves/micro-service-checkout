@@ -37,7 +37,7 @@ public class EfetuarPagamentoUseCaseTest {
     public void efetuarPagamento_SetUrlWebhook() {
         response.setIdPedido("123456");
         useCase.efetuarPagamento(response);
-        assertEquals("localhost:8585/pagamento/123456", response.getUrlWebhook());
+        assertEquals("localhost:8989/pagamento/123456", response.getUrlWebhook());
     }
 
     @Test

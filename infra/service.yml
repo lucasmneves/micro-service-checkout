@@ -10,6 +10,6 @@ spec:
     app: checkout-ms
   ports:
     - port: 80
-      targetPort: 8585
+      targetPort: 8989
   type: LoadBalancer
   
